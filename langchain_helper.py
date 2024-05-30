@@ -17,7 +17,7 @@ vectordb_file_path = "faiss_index"
 def create_vector_db():
     loader = CSVLoader(file_path=os.path.join(dirname, 'newRateGG.csv'), source_column='prompt')
     docs = loader.load()
-    vectordb = FAISS.from_documents(documents=docs, embedding=instructor_embeddings, allow_dangerous_deserialization=True))
+    vectordb = FAISS.from_documents(documents=docs, embedding=instructor_embeddings, allow_dangerous_deserialization=True)
     vectordb.save_local(vectordb_file_path)
 
 def get_qa_chain():
@@ -48,10 +48,3 @@ def get_qa_chain():
 
     return chain
 
-if __name__ == "__main__":
-    create_vector_db()  # Ensure the vector DB is created first
-    chain = get_qa_chain()
-
-    # Use the invoke method instead of __call__
-    response = chain.invoke({"query": "Which professor did senior take for computer science?"})
-    print(response)
