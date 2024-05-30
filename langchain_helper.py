@@ -17,12 +17,12 @@ vectordb_file_path = "faiss_index"
 def create_vector_db():
     loader = CSVLoader(file_path=os.path.join(dirname, 'newRateGG.csv'), source_column='prompt')
     docs = loader.load()
-    vectordb = FAISS.from_documents(documents=docs, embedding=instructor_embeddings, allow_dangerous_deserialization=True)
+    vectordb = FAISS.from_documents(documents=docs, embedding=instructor_embeddings)
     vectordb.save_local(vectordb_file_path)
 
 def get_qa_chain():
     # Load the vector database from the local folder
-    vectordb = FAISS.load_local(vectordb_file_path, instructor_embeddings)
+    vectordb = FAISS.load_local(vectordb_file_path, instructor_embeddings, allow_dangerous_deserialization=True)
 
     # Create a retriever for querying the vector database
     retriever = vectordb.as_retriever(score_threshold=0.7)
