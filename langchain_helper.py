@@ -1,3 +1,4 @@
+import os
 from langchain_community.document_loaders import CSVLoader
 from langchain_community.llms import GooglePalm
 from langchain_community.embeddings import HuggingFaceInstructEmbeddings
@@ -6,6 +7,7 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import RetrievalQA
 from langchain_google_genai import GoogleGenerativeAI
 
+dirname = os.path.dirname(__file__)
 # Use the API key directly if not using environment variables
 api_key = "AIzaSyC5i30S3L7UcGFsnlrmRmMEQWne21um5DQ"
 llm = GoogleGenerativeAI(model="models/text-bison-001", google_api_key=api_key, temperature=0.1)
@@ -13,7 +15,7 @@ instructor_embeddings = HuggingFaceInstructEmbeddings()
 vectordb_file_path = "faiss_index"
 
 def create_vector_db():
-    loader = CSVLoader(file_path='/Users/aungnandaoo/Documents/newRateGG.csv', source_column='prompt')
+    loader = CSVLoader(file_path=os.path.join(dirname, 'newRateGG.csv'), source_column='prompt')
     docs = loader.load()
     vectordb = FAISS.from_documents(documents=docs, embedding=instructor_embeddings)
     vectordb.save_local(vectordb_file_path)
