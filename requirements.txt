@@ -15,6 +15,7 @@ PyPDF2
 faiss-cpu==1.7.4
 InstructorEmbedding
 torch
+sentence-transformers
 
 # Firebase
 firebase_admin
