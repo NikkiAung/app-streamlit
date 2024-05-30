@@ -10,3 +10,7 @@ firebase_admin
 streamlit_option_menu
 tiktoken==0.4.0
 protobuf~=3.19.0
+InstructorEmbedding==1.0.1
+torch
+sentence-transformers==2.2.0  # Ensure this version is compatible with InstructorEmbedding
+huggingface_hub
