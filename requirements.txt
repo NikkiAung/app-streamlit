@@ -1,19 +1,29 @@
-streamlit
-google-generativeai
-python-dotenv
-langchain
-PyPDF2
-faiss-cpu 
-langchain_google_genai
-firebase_admin
-streamlit_option_menu
-faiss-cpu
-langchain==0.0.284
-python-dotenv==1.0.0
+# Core dependencies
 streamlit==1.22.0
-tiktoken==0.4.0
-faiss-cpu==1.7.4
-protobuf~=3.19.0
+python-dotenv==1.0.0
+langchain==0.0.284
 langchain_community
+langchain_google_genai
+
+# Google Generative AI
+google-generativeai
+
+# PDF processing
+PyPDF2
+
+# Vector search and embeddings
+faiss-cpu==1.7.4
 InstructorEmbedding
 torch
+
+# Firebase
+firebase_admin
+
+# Streamlit extras
+streamlit_option_menu
+
+# Tokenization
+tiktoken==0.4.0
+
+# Protocol Buffers
+protobuf~=3.19.0
