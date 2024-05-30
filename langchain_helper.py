@@ -5,13 +5,13 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import RetrievalQA
 from langchain_google_genai import GoogleGenerativeAI
 
-api_key = "AIzaSyAw_CjFEeKuW4T-VkFVgTPB4JHXZhRNy6E"
+api_key = "YOUR_GOOGLE_API_KEY"
 llm = GoogleGenerativeAI(model="models/text-bison-001", google_api_key=api_key, temperature=0.1)
 instructor_embeddings = HuggingFaceInstructEmbeddings()
 vectordb_file_path = "faiss_index"
 
 def create_vector_db():
-    loader = CSVLoader(file_path='/Users/aungnandaoo/Documents/newRateGG.csv', source_column='prompt')
+    loader = CSVLoader(file_path='/path/to/your/file.csv', source_column='prompt')
     docs = loader.load()
     vectordb = FAISS.from_documents(documents=docs, embedding=instructor_embeddings)
     vectordb.save_local(vectordb_file_path)
