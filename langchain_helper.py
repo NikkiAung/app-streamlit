@@ -9,7 +9,7 @@ from langchain_google_genai import GoogleGenerativeAI
 
 dirname = os.path.dirname(__file__)
 # Use the API key directly if not using environment variables
-api_key = "AIzaSyC5i30S3L7UcGFsnlrmRmMEQWne21um5DQ"
+api_key = ""
 llm = GoogleGenerativeAI(model="models/text-bison-001", google_api_key=api_key, temperature=0.1)
 instructor_embeddings = HuggingFaceInstructEmbeddings()
 vectordb_file_path = "faiss_index"
